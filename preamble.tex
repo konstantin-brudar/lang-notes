@@ -1,0 +1,85 @@
+% ==============================================
+% ПРЕАМБУЛА ДЛЯ КОНСПЕКТОВ ПО ИНОСТРАННЫМ ЯЗЫКАМ
+% ==============================================
+
+% НАЧАЛО: Языки и шрифты
+\usepackage{cmap}            % Поиск и копирование русского текста из PDF
+\usepackage[utf8]{inputenc}  % Кодировка исходного текста
+\usepackage[T1,T2A]{fontenc} % Поддержка кириллических шрифтов
+\usepackage[romanian,russian]{babel} % Переносы строк по правилам языка
+\usepackage{tipa}            % Фонетические знаки
+
+% ГЕОМЕТРИЯ: Размеры полей страницы
+\usepackage[
+    left=2cm,
+    right=2cm,
+    top=2cm,
+    bottom=2cm
+]{geometry}
+
+% ГРАФИКА: Иллюстрации и рисунки
+\usepackage{graphicx}        % Вставка готовых картинок (PNG, JPG, PDF)
+\usepackage{tikz}            % Рисование графиков и схем кодом
+
+% ТИПОГРАФИКА: Оформление текста
+\usepackage{indentfirst}     % Принудительный отступ (красная строка) для всех абзацев
+\usepackage{microtype}       % Выравнивание краев текста без разрывов слов
+
+% Междустрочный интервал
+\usepackage{setspace}
+\setstretch{1.0}
+
+% Настройка абзацев
+\usepackage[
+    skip=0.5em,  % Вертикальный интервал (обычно 0.5em)
+    indent=0em,  % Красная строка (обычно 1.5em)
+]{parskip}
+
+% Настройка списков
+\usepackage{enumitem}
+
+% Регистрируем русские буквы в пакете enumitem
+\AddEnumerateCounter{\asbuk}{\@asbuk}{а}
+\AddEnumerateCounter{\Asbuk}{\@Asbuk}{А}
+
+\setlist{
+    nosep,            % Убрать все вертикальные отступы
+    leftmargin=1.5em, % Горизонтальный отступ от предыдущего уровня
+}
+
+% Маркеры списков (itemize)
+\setlist[itemize]{label=---}
+
+% Маркеры списков (enumerate)
+\setlist[enumerate,1]{label=\arabic*.}
+\setlist[enumerate,2]{label=\arabic*)}
+\setlist[enumerate,3]{label=\asbuk*)}
+
+% ЛОКАЛИЗАЦИЯ: Переименование стандартных названий
+\addto\captionsrussian{\renewcommand{\chaptername}{Урок}}        % Глава
+\addto\captionsrussian{\renewcommand{\contentsname}{Содержание}} % Оглавление
+
+% НУМЕРАЦИЯ: Формат разделов
+\setcounter{secnumdepth}{1} % Отключает нумерацию для subsection и ниже
+\setcounter{tocdepth}{1}    % Убирает subsection и ниже из оглавления
+\renewcommand{\thesection}{§\,\arabic{section}} % Номер раздела в виде параграфа: § 1
+
+% ТАБЛИЦЫ
+\usepackage{tabularray}    % Современные таблицы
+\UseTblrLibrary{booktabs}  % Линии для таблиц
+
+% Обнуление внешних отступов
+\SetTblrOuter[tblr]{presep=0pt, postsep=0pt}
+\SetTblrOuter[longtblr]{presep=0pt, postsep=0pt}
+
+% Отключение подписей у длинных таблиц
+\DefTblrTemplate{firsthead,middlehead,lasthead}{default}{}
+\DefTblrTemplate{firstfoot,middlefoot,lastfoot}{default}{}
+
+% КОНЕЦ: Интерактивность и ссылки
+\usepackage[
+    colorlinks=true,   % Цветной текст для ссылок вместо цветных рамок
+    linkcolor=black,   % Черный цвет ссылок в оглавлении
+    urlcolor=blue,     % Синий цвет для интернет-ссылок
+    citecolor=black    % Черный цвет для библиографии
+]{hyperref}
